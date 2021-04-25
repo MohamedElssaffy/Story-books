@@ -1,0 +1,14 @@
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log(mongoose.connection.host))
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
